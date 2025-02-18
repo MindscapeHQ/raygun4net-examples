@@ -1,0 +1,8 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
