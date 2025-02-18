@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Raygun4Net.NetCore.Example.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Raygun4Net.NetCore.Example.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

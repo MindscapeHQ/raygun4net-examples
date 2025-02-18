@@ -1,0 +1,43 @@
+name: Build Solution
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        path: raygun4net-examples
+    # Checkout Raygun4Net
+    - uses: actions/checkout@v4
+      with:
+        repository: MindscapeHQ/raygun4net
+        path: raygun4net
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Setup JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'microsoft'
+        java-version: '17'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+    
+    - name: Restore workloads
+      working-directory: raygun4net-examples
+      run: dotnet workload restore
+
+    - name: Build Solution
+      working-directory: raygun4net-examples
+      run: dotnet build
