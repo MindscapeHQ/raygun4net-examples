@@ -25,6 +25,12 @@ included in the repository root.
 dotnet build
 ```
 
+You might need to install workloads with:
+
+```
+dotnet workload restore
+```
+
 ### Solution management
 
 To add a project to the root solution, use the `sln` command:
