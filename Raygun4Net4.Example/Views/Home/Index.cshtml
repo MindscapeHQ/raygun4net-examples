@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Thread correlation</h1>
+    <p class="lead">Correlate all the things.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Thread start cases</h2>
+        <p>@Html.ActionLink("new Thread.Start() kitchen sink case", "ThreadStartKitchenSinkCase", "ThreadStart")</p>
+        
+        <h2>Thread timer cases</h2>
+        <p>@Html.ActionLink("new Timer(x => {}) single invoke case", "ThreadTimerSingleInvokeCase", "ThreadTimer")</p>
+        <p>@Html.ActionLink("new Timer(x => {}) multiple invoke case", "ThreadTimerMultipleInvokeCase", "ThreadTimer")</p>
+        
+        <h2>Async/await cases</h2>
+        <p>@Html.ActionLink("Basic case", "BasicAsyncAwaitCase", "Async")</p>
+        <p>@Html.ActionLink("Multiple case", "MultipleAsyncAwaitCase", "Async")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Task cases</h2>
+        <p>@Html.ActionLink("Single Task.Run() case", "SingleRunTaskCase", "Task")</p>
+        <p>@Html.ActionLink("Single Task.Run().Wait() case", "SingleRunTaskCombinableCase", "Task")</p>
+        <p>@Html.ActionLink("Single Task<int>.Run() case", "SingleRunTaskGenericResultCase", "Task")</p>
+        <p>@Html.ActionLink("Single new Task().Start() case", "SingleNewTaskStartCase", "Task")</p>
+        <p>@Html.ActionLink("Single new Task().RunSynchronously() case", "SingleRunSynchronouslyTaskCase", "Task")</p>
+        <p>@Html.ActionLink("Single Task.Run(), with no wait case", "SingleRunTaskNoWaitCase", "Task")</p>
+        <p>@Html.ActionLink("Single Task.Run().ContinueWith() case", "SingleRunTaskWithContinuationCase", "Task")</p>
+        <p>@Html.ActionLink("Single Task.Run().ContinueWith().ContinueWith() case", "SingleRunTaskKitchenSinkCase", "Task")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Task pool cases</h2>
+        <p>@Html.ActionLink("ThreadPool.QueueUserWorkItem(state => {...}) case", "ThreadPoolSingleQueueUserWorkItemCase", "ThreadPool")</p>
+        <p>@Html.ActionLink("ThreadPool.QueueUserWorkItem(state => {...}), with no wait case", "ThreadPoolSingleQueueUserWorkItemNoWaitCase", "ThreadPool")</p>
+        
+        <h2>Exception cases</h2>
+        <p>@Html.ActionLink("Null reference unhandled", "UnhandledNullReference", "Home")</p>
+        <p>@Html.ActionLink("Null reference handled sync", "HandledNullReferenceSync", "Home")</p>
+        <p>@Html.ActionLink("Null reference handled async", "HandledNullReferenceAsync", "Home")</p>
+        <p>@Html.ActionLink("Unhandled on separate thread", "UnhandledExceptionOnSeparateThread", "Home")</p>
+        <p>@Html.ActionLink("Unhandled with inner", "UnhandledExceptionWithInnerError", "Home")</p>
+        <p>@Html.ActionLink("Handled with inner sync", "HandledExceptionWithInnerError", "Home")</p>
+
+    </div>
+    
+</div>
