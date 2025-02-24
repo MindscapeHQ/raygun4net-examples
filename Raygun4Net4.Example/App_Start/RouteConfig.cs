@@ -3,16 +3,16 @@ using System.Web.Routing;
 
 namespace WebApplication1
 {
-  public class RouteConfig
-  {
-    public static void RegisterRoutes(RouteCollection routes)
+    public class RouteConfig
     {
-      routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-      routes.MapRoute(
-        "Default",
-        "{controller}/{action}/{id}",
-        new {controller = "Home", action = "Index", id = UrlParameter.Optional}
-      );
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+              "Default",
+              "{controller}/{action}/{id}",
+              new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+        }
     }
-  }
 }

@@ -8,26 +8,26 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-  public class ThreadStartController : CorrelationControllerBase
-  {
-    public ActionResult ThreadStartKitchenSinkCase()
+    public class ThreadStartController : CorrelationControllerBase
     {
-      ViewBag.Message = "Start multiple threads using new Thread().Start() with one thread starting a child thread and waiting for all to complete.";
+        public ActionResult ThreadStartKitchenSinkCase()
+        {
+            ViewBag.Message = "Start multiple threads using new Thread().Start() with one thread starting a child thread and waiting for all to complete.";
 
-      var thread1 = new Thread(Thread1StartDoWork);
-      thread1.Start();
-      
-      DoMaths();
-      
-      var thread2 = new Thread(Thread2StartDoWork);
-      thread2.Start();
-      
-      Thread.Sleep(100);
-      
-      thread1.Join();
-      thread2.Join();
+            var thread1 = new Thread(Thread1StartDoWork);
+            thread1.Start();
 
-      return View("ThreadStartCase");
+            DoMaths();
+
+            var thread2 = new Thread(Thread2StartDoWork);
+            thread2.Start();
+
+            Thread.Sleep(100);
+
+            thread1.Join();
+            thread2.Join();
+
+            return View("ThreadStartCase");
+        }
     }
-  }
 }

@@ -8,38 +8,38 @@ using System.Web.Mvc;
 
 namespace WebApplication1.Controllers
 {
-  public class ThreadPoolController : CorrelationControllerBase
-  {
-    public ActionResult ThreadPoolSingleQueueUserWorkItemCase()
+    public class ThreadPoolController : CorrelationControllerBase
     {
-      ViewBag.Message = "Ran case ThreadPool.QueueUserWorkItem() with wait";
+        public ActionResult ThreadPoolSingleQueueUserWorkItemCase()
+        {
+            ViewBag.Message = "Ran case ThreadPool.QueueUserWorkItem() with wait";
 
-      var resetEvent = new ManualResetEvent(false);
-      ThreadPool.QueueUserWorkItem(state =>
-      {
-        Thread1StartDoWork();
-        resetEvent.Set();
-      });
-      
-      DoMaths();
-      
-      resetEvent.WaitOne();
+            var resetEvent = new ManualResetEvent(false);
+            ThreadPool.QueueUserWorkItem(state =>
+            {
+                Thread1StartDoWork();
+                resetEvent.Set();
+            });
 
-      return View("ThreadPoolCase");
+            DoMaths();
+
+            resetEvent.WaitOne();
+
+            return View("ThreadPoolCase");
+        }
+
+        public ActionResult ThreadPoolSingleQueueUserWorkItemNoWaitCase()
+        {
+            ViewBag.Message = "Ran case ThreadPool.QueueUserWorkItem() with no wait";
+
+            ThreadPool.QueueUserWorkItem(state =>
+            {
+                Thread1StartDoWork();
+            });
+
+            DoMaths();
+
+            return View("ThreadPoolCase");
+        }
     }
-    
-    public ActionResult ThreadPoolSingleQueueUserWorkItemNoWaitCase()
-    {
-      ViewBag.Message = "Ran case ThreadPool.QueueUserWorkItem() with no wait";
-
-      ThreadPool.QueueUserWorkItem(state =>
-      {
-        Thread1StartDoWork();
-      });
-      
-      DoMaths();
-      
-      return View("ThreadPoolCase");
-    }
-  }
 }
