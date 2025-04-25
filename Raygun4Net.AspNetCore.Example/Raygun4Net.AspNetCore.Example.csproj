@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mindscape.Raygun4Net.AspNetCore" Version="11.2.2" />
-    <PackageReference Include="Mindscape.Raygun4Net.Extensions.Logging" Version="11.2.2" />
+    <ProjectReference Include="../../raygun4net/Mindscape.Raygun4Net.AspNetCore/Mindscape.Raygun4Net.AspNetCore.csproj"/>
+    <ProjectReference Include="../../raygun4net/Mindscape.Raygun4Net.Extensions.Logging/Mindscape.Raygun4Net.Extensions.Logging.csproj"/>
   </ItemGroup>
 
 </Project>
