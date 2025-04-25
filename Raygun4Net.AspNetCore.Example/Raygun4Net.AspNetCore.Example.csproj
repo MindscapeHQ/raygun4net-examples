@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Mindscape.Raygun4Net.AspNetCore" Version="11.2.2" />
+  </ItemGroup>
+
 </Project>
