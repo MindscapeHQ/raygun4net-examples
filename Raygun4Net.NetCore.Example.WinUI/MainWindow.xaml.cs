@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -18,11 +19,15 @@ using Windows.Foundation.Collections;
 
 namespace Raygun4Net.NetCore.Example.WinUI
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    /// <summary>  
+    /// An empty window that can be used on its own or navigated to within a Frame.  
+    /// </summary>  
     public sealed partial class MainWindow : Window
     {
+        // Change to the path of the DLL you build with Raygun4Net.DLL.Example
+        [DllImport("PATH TO DLL\\Raygun4Net.DLL.Example.dll")]
+        public static extern int division(int a, int b); 
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -30,8 +35,19 @@ namespace Raygun4Net.NetCore.Example.WinUI
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
-            var zero = 0;
-            var crash = 1 / zero; // This will cause a divide by zero exception.
+            try
+            {
+                // This will work and return 2
+                var result = division(4, 2);
+                Console.WriteLine("Result: " + result);
+
+                // This will throw a divide by zero exception
+                var crash = division(1, 0);
+            }
+            catch (DllNotFoundException ex)
+            {
+                Console.WriteLine("Dll Not Found: " + ex.Message);
+            }
         }
     }
 }

@@ -58,6 +58,6 @@
   </PropertyGroup>
     
   <ItemGroup>
-    <ProjectReference Include="../../raygun4net/Mindscape.Raygun4Net.NetCore/Mindscape.Raygun4Net.NetCore.csproj"/>
+    <ProjectReference Include="../../raygun4net/Mindscape.Raygun4Net.NetCore/Mindscape.Raygun4Net.NetCore.csproj" />
   </ItemGroup>
 </Project>
